@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-int fractBits = 0;
+int fractBits = 8;
 
 Fixed::Fixed()
 {
