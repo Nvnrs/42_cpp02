@@ -1,5 +1,6 @@
 #include "Fixed.hpp"
 
+
 const int Fixed::fractBits = 8;
 
 Fixed::Fixed()
@@ -17,6 +18,12 @@ Fixed::Fixed(const int &nb)
 {
 	std::cout << "Int constructor called\n";
 	this->rawBits = nb << this->fractBits;
+}
+
+Fixed::Fixed(const float &nb)
+{
+	std::cout << "Float constructor called\n";
+	this->rawBits = round(nb * pow(2, this->fractBits));
 }
 Fixed &Fixed::operator=(const Fixed &nb)
 {
@@ -43,4 +50,10 @@ void Fixed::setRawBits( int const raw )
 int Fixed::toInt( void ) const
 {
 	return this->rawBits >> this->fractBits;
+}
+
+
+float Fixed::toFloat( void ) const
+{
+	return this->rawBits /  pow(2, this->fractBits);
 }
